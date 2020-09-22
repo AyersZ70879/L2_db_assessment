@@ -5,9 +5,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="games, apps, ">
+    <meta name="description" content="bands, heavy metal, ">
     <meta name="GTT" content="Metal Bands Database">
-    <meta name="keywords" content="games, apps, ratings">
+    <meta name="keywords" content="bands, metal bands, music">
     
     <title>Game Database</title>
 
@@ -28,11 +28,11 @@
     
         <!-- logo / small image goes here -->
         <div class="box logo">
-            <a href="index.php"><img src="images/logo.png" width="261" height="150" alt="Dice" /></a>
+            <a href="index.php"><img src="images/guitar%20photo.jpg" width="261" height="150" alt="Guitar" /></a>
         </div> <!-- / logo -->
         
         <div class="box banner">
-            <h1>Games Database</h1>        
+            <h1>Metal Bands Database</h1>        
         </div> <!-- / banner -->
                        
             
@@ -58,7 +58,7 @@
         </div> <!-- / side bar -->
         
         <div class="box footer">
-            CC GTT 20XX
+            CC Zarah Ayers 2020
         </div> <!-- / footer -->
                 
         
