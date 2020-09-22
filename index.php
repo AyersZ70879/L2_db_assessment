@@ -28,7 +28,7 @@
     
         <!-- logo / small image goes here -->
         <div class="box logo">
-            <a href="index.php"><img src="images/guitar%20photo.jpg" width="261" height="150" alt="Guitar" /></a>
+            <a href="index.php"><img src="images/guitar%20photo.jpg" width="300" height="150" alt="Guitar" /></a>
         </div> <!-- / logo -->
         
         <div class="box banner">
