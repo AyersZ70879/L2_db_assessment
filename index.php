@@ -1,68 +1,17 @@
-<!DOCTYPE HTML>
-
-<html lang="en">
-    
-
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="bands, heavy metal, ">
-    <meta name="GTT" content="Metal Bands Database">
-    <meta name="keywords" content="bands, metal bands, music">
-    
-    <title>Game Database</title>
-
-    <!-- for multiple fonts change | to %7c * no spaces*  -->
-    <link href="https://fonts.googleapis.com/css?family=Lato%7cUbuntu" rel="stylesheet">  
-
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/data_style.css">    <!-- custom style sheet -->
-
-    
-</head>
-
-<body>
-    
-    <p class="message">Eek!  Your browser does not support grid.  Please upgrade your system.</p>
-        
-    <div class="wrapper">
-    
-        <!-- logo / small image goes here -->
-        <div class="box logo">
-            <a href="index.php"><img src="images/guitar%20photo.jpg" width="300" height="150" alt="Guitar" /></a>
-        </div> <!-- / logo -->
-        
-        <div class="box banner">
-            <h1>Metal Bands Database</h1>        
-        </div> <!-- / banner -->
-                       
+<?php include("topbit.php")?>                       
             
         <div class="box main">
             <h2>Welcome</h2>
             
+            <p>This databse contains many metal bands and some general information about them. </p>
             
-            <p>
-                Put link to original dataset here
-            </p>
+            
+            <h3>Acknowledgements and Sources</h3>
+            
+            <p>The <a href="https://www.kaggle.com/mrpantherson/metal-by-nation">original dataset</a> can be found at the preceding link.</p>
             
 
             
         </div> <!-- / main -->
         
-        <div class="box side">
-           
-           <h2>Search Area</h2>
-           
-           <p>This is where the search area goes
-
-            
-        </div> <!-- / side bar -->
-        
-        <div class="box footer">
-            CC Zarah Ayers 2020
-        </div> <!-- / footer -->
-                
-        
-    </div> <!-- / wrapper -->
-    
-            
-</body>
+<?php include("bottombit.php")?> 

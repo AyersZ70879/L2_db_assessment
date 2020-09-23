@@ -45,11 +45,11 @@ body {
 
 /* make logo and banner the same colour */
 .logo, .main {
-    background-color: #dfcfbc;  /* beige */
+    background-color: #A89B8E;  /* grey/brown */
 }
 
 .banner, .side {
-    background-color: #d6d3d7; /* blue grey */
+    background-color: #CB997E; /* blue grey */
 }
 
 
@@ -89,7 +89,7 @@ body {
     grid-area: foot;
     text-align: right;
     color: #fff;
-    background-color: #636263;
+    background-color: #745947;
 }
 
 
@@ -109,9 +109,9 @@ h1, h2, h3, h4 {
 
 /* links in page */
 
-a:link{color: #d6d3d7;}
-a:visited{color: #ccc;}
-a:hover{color: #dfcfbc;}
+a:link{color: #3A2618;}
+a:visited{color: #3A2618;}
+a:hover{color: #000;}
 
 /* side links */
 a.side {
