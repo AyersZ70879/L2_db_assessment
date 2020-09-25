@@ -1,4 +1,6 @@
 <div class="box side">
+    
+     <h2>Add an App | <a class="side" href="showall.php">Show All</a></h2>
            
            <h2>Search Area</h2>
            
