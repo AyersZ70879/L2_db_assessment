@@ -1,6 +1,20 @@
 <!DOCTYPE HTML>
 
 <html lang="en">
+
+<?php
+    
+    session_start(); // to allow variable transfer between pages...
+    include("config.php");
+    
+    // Connect to database
+    $dbconnect=mysqli_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+    
+    if(mysqli_connect_errno()) {
+        echo "Connection failed:".mysqli_connect_error();
+        exit;
+    }
+    ?>
     
 
 <head>
