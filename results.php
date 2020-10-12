@@ -91,7 +91,7 @@
                 
                 <p>
                 <!-- Style -->
-                <b>Style/s:</b> <?php echo $find_rs['Style'];?> <br />               
+                <b>Style/s:</b> <?php echo $find_rs['Style'];?> <br /> 
                 Number of Fans: <b><?php echo $find_rs['NumFans'];?></b> and up
                 
             </p>
