@@ -44,21 +44,23 @@
                 
                 <div class="flex-container">
                     
-                    <b>Formed:</b> <?php echo $find_rs['Formed'];?> 
-                    
-                </div> 
-                    
+                    <b>Formed:</b> <?php echo $find_rs['Formed']; 
+                    ?>
                     <!-- Split -->
                     
                     <?php
                     if($find_rs['Split'] > 0) 
                     {
                       ?>
-                <i>The band has split</i>
+                <i>- (The band has split)</i>
                     
                     <?php
                         } // end of first split
-                    ?>
+                    ?> 
+                    
+                </div> 
+                    
+                    
                 
                 
                 <div class="flex-container">
@@ -91,7 +93,20 @@
                 
                 <p>
                 <!-- Style -->
-                <b>Style/s:</b> <?php echo $find_rs['Style'];?> <br /> 
+                <b>Style/s:</b> <?php echo $find_rs['Style'];?>
+                     
+                    <?php
+                    if($find_rs['Style2ID'] > 0) 
+                    {
+                      ?>
+                and <?php echo $find_rs['Style2']; ?>
+                    
+                    <?php
+                        } // end of if style 2 exists
+                    ?>
+                    
+                    
+                     <br /> 
                 Number of Fans: <b><?php echo $find_rs['NumFans'];?></b> and up
                 
             </p>
