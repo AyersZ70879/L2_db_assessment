@@ -94,7 +94,15 @@
                 <p>
                 <!-- Style -->
                 <b>Style/s:</b> <?php echo $find_rs['Style']; ?>
-                    and <?php echo $find_rs['Style2']; ?>
+                    
+                    <?php
+                    if($find_rs['Style2ID'] > 0) 
+                    {
+                        ?>
+                        and <?php echo $find_rs['Style2']; ?>
+                    <?php
+                    } // end of style 2 if statement
+                    ?>
                     
                     
                      <br /> 
