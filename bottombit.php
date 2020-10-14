@@ -4,17 +4,12 @@
            
             <form class="searchform" method="post" action="band_name.php" enctype="multipart/form-data">
             
-                <input class="search" type="text" name="dev_name" size="40" value="" required placeholder="App Name / Developer Name..."/>
+                <input class="search" type="text" name="band_name" size="40" value="" required placeholder="Band Name..."/>
                
-                <input class="submit" type="submit" name="find_game_name"    value="&#xf002;" />
+                <input class="submit" type="submit" name="find_band_name"    value="&#xf002;" />
                
             </form>
             
-            <form class="searchform" method="post" action="free.php" enctype="multipart/form-data">
-            
-                <input class="submit free" type="submit" name="free" value="Free with No In App Purchase &nbsp; &#xf002;" />
-                
-            </form>
             
             <br />
             <hr />
