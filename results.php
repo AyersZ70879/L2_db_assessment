@@ -35,7 +35,7 @@
                             </div>
                             
                         </span>
-                    </div> <!-- /Title -->
+                    </div> <!-- /Name -->
                     
                 </div>
                 <br />
@@ -55,7 +55,7 @@
                 <i>- (The band has split)</i>
                     
                     <?php
-                        } // end of first split
+                        } // end of split
                     ?> 
                     
                 </div> 
@@ -92,18 +92,31 @@
                     ?>
                 
                 <p>
+                    
+                <div class="flex-container">    
                 <!-- Style -->
-                <b>Style/s:</b> <?php echo $find_rs['Style']; ?>
+                <b>Style/s:</b> 
+                    
+                    <?php echo $find_rs['Style']; ?>
+                        
+                    
+                    
+                    <!-- Style 2 -->
                     
                     <?php
                     if($find_rs['Style2ID'] > 0) 
                     {
+                         $find_sql = "JOIN 00_L2_bands_style2 ON (00_L2_bands.Style2ID  = 00_L2_bands_style2.StyleID)
+    
+    ";
                         ?>
-                        and <?php echo $find_rs['Style2']; ?>
-                    <?php
+                        and 
+                        <?php echo $find_rs['Style2'];
+                        
                     } // end of style 2 if statement
                     ?>
-                    
+
+                </div>
                     
                      <br /> 
                 Number of Fans: <b><?php echo $find_rs['NumFans'];?></b> and up
