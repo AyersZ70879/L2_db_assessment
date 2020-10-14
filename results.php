@@ -103,7 +103,6 @@
                     
                     <!-- Style 2 -->
                     
-                    
                       <?php                                           
                         if($find_rs['Style2ID'] > 0) 
                         {
