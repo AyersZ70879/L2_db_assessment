@@ -98,24 +98,25 @@
                 <b>Style/s:</b> 
                     
                     <?php echo $find_rs['Style']; ?>
-                        
+                      
                     
                     
                     <!-- Style 2 -->
                     
-                    <?php
-                    if($find_rs['Style2ID'] > 0) 
-                    {
-                         $find_sql = "JOIN 00_L2_bands_style2 ON (00_L2_bands.Style2ID  = 00_L2_bands_style2.StyleID)
-    
-    ";
+                    
+                      <?php                                           
+                        if($find_rs['Style2ID'] > 0) 
+                        {
+                            
                         ?>
-                        and 
-                        <?php echo $find_rs['Style2'];
+                        and <?php
+                        echo $find_rs['Style2'];
+                            
+                            
                         
                     } // end of style 2 if statement
                     ?>
-
+                    
                 </div>
                     
                      <br /> 
