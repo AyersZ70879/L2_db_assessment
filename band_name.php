@@ -19,7 +19,7 @@
 ?>
 
         <div class="box main">
-            <h2>Name / Developer Results</h2>
+            <h2>Band Name Results</h2>
             
             
             <?php
