@@ -21,95 +21,102 @@
                 
             <form class="searchform" method="post" action="adv_results.php" enctype="multipart/form-data">
             
-            <input class="adv" type="text" name="app_name" sixe="40" value="" placeholder="App Name / Title"/>
-                
-            <input class="adv" type="text" name="dev_name" size="40" value="" placeholder="Developer..." />
+            <input class="adv" type="text" name="band_name" sixe="40" value="" placeholder="Band Name"/>
             
                 
-            <!-- Genre Dropdown -->
+            <!-- Country Dropdown -->
             
-            <select class="search adv" name="genre">
+            <select class="search adv" name="country">
                 
-            <option value="" selected>Genre...</option>
+            <option value="" selected>Country...</option>
                 
             <!-- get option from database -->
                 <?php 
-                $genre_sql="SELECT * FROM `00_L2_games_genre` ORDER BY `00_L2_games_genre`.`Genre` ASC";
-                $genre_query=mysqli_query($dbconnect, $genre_sql);
-                $genre_rs=mysqli_fetch_assoc($genre_query);
+                $country_sql="SELECT * FROM `00_L2_bands_country` ORDER BY `00_L2_bands_country`.`CountryName` ASC";
+                $country_query=mysqli_query($dbconnect, $country_sql);
+                $country_rs=mysqli_fetch_assoc($country_query);
                 
                 do{
                     ?>
                 
-                <option value="<?php echo $genre_rs['Genre']; ?>"><?php echo $genre_rs['Genre']; ?></option>
+                <option value="<?php echo $country_rs['Country']; ?>"><?php echo $country_rs['Country']; ?></option>
                 
                 <?php
                         
                     
-                } // end genre do loop
+                } // end country do loop
                 
-                while($genre_rs=mysqli_fetch_assoc($genre_query))
+                while($country_rs=mysqli_fetch_assoc($country_query))
                 
                 ?>
                 
             </select>  
                 
-            <!-- Cost -->
+            <!-- Formed -->
             <div class="flex-container">
                 
                 <div class="adv-text">
-                    Cost&nbsp;(less&nbsp;than): 
-                </div> <!-- / cost label -->
+                    Formed: 
+                </div> <!-- / formed label -->
                 
                 <div>
-                    <input class="adv-cost" type="text" name="cost" value="" placeholder="$..."/>
+                    <input class="adv-formed" type="text" name="formed" value="" placeholder="Band Formed..."/>
                 </div> <!-- / input box -->
                 
-            </div> <!-- / cost flexbox -->
+            </div> <!-- / formed flexbox -->
                 
-            <!-- No In App Checkbox -->
-            <input class="adv-txt" type="checkbox" name="in_app" value="0">No In App Purchase
+            <!-- Popular Checkbox -->
+            <input class="adv-txt" type="checkbox" name="popular" value="0">Popular (well known)?
                 
-            <!-- Rating -->
+            <!-- Styles -->
             <div class="flex-container">
-                <div class="adv-txt">
-                Rating:
-                </div> <!-- / rating label -->
+                <select class="search adv" name="styles">
                 
-                <div>
-                    <select class="search adv" name="rate_more_less">
-                        <option value="" selected>Choose...</option>
-                        <option value="at least">At Least</option>
-                        <option value="at most">At Most</option>
-                    </select>
+            <option value="" selected>Styles...</option>
+                
+            <!-- get option from database -->
+                <?php 
+                $style_sql="SELECT * FROM `00_L2_bands_style` ORDER BY `00_L2_bands_style`.`Style` ASC";
+                $style_query=mysqli_query($dbconnect, $style_sql);
+                $style_rs=mysqli_fetch_assoc($style_query);
+                
+                do{
+                    ?>
+                
+                <option value="<?php echo $style_rs['Style']; ?>"><?php echo $style_rs['Style']; ?></option>
+                
+                <?php
+                        
                     
-                </div> <!-- / rating drop down -->
+                } // end style do loop
                 
-                <div>
-                    <input class="adv" type="text" name="rating" size="3" value="" placeholder=""/>
-                </div> <!-- / rating amount -->
+                while($style_rs=mysqli_fetch_assoc($style_query))
+                
+                ?>
+                
+            </select>
                                 
-            </div> <!-- / rating flexbox -->
+            </div> <!-- / style flexbox -->
                 
-            <!-- Age -->
+            <!-- Fans -->
             <div class="flex-container">
                 <div class="adv-txt">
-                Age:
-                </div> <!-- / age label -->
+                # of Fans:
+                </div> <!-- / fans label -->
                 
                 <div>
-                    <select class="search adv" name="age_more_less">
+                    <select class="search adv" name="fans_more_less">
                         <option value="" selected>Choose...</option>
                         <option value="at least">At Least</option>
                         <option value="at most">At Most</option>                    
                     </select>
-                </div> <!-- / age drop down -->
+                </div> <!-- / fans drop down -->
                 
                 <div>
-                    <input class="adv" type="text" name="age" size="3" value="" placeholder=""/>
-                </div> <!-- / age amount -->
+                    <input class="adv" type="text" name="fans" size="3" value="" placeholder=""/>
+                </div> <!-- / fans amount -->
                 
-                </div> <!-- / age flexbox --> 
+                </div> <!-- / fans flexbox --> 
                 
             <!-- Search button is below -->
             <input class="submit advanced-button" type="submit" name="advanced" value="Search &nbsp; &#xf002;" />
