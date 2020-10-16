@@ -1,7 +1,7 @@
 <?php include("topbit.php");
 
     $band_name = mysqli_real_escape_string($dbconnect, $_POST['band_name']);
-    //$country = mysqli_real_escape_string($dbconnect, $_POST['country']);
+    $country = mysqli_real_escape_string($dbconnect, $_POST['country']);
     // $style = mysqli_real_escape_string($dbconnect, $_POST['style']);
     $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
    
@@ -44,18 +44,18 @@
    // } // end fans if / elseif / else
 
 
-    $find_sql = "SELECT * FROM `00_L2_bands`
-    JOIN 00_L2_bands_country ON (00_L2_games.CountryID = 00_L2_games_country.CountryID)
-    JOIN 00_L2_bands_style ON (00_L2_bands.Style1ID = 00_L2_bands_style.StyleID)
-    WHERE `Name` LIKE '%$band_name%'
-    
-    
+     $find_sql = "SELECT *
+    FROM `00_L2_bands`
+    JOIN 00_L2_bands_country ON (00_L2_bands.CountryID = 00_L2_bands_country.CountryID)
+    JOIN 00_L2_bands_style ON (00_L2_bands.Style1ID  = 00_L2_bands_style.StyleID)
+    JOIN 00_L2_bands_style2 ON (00_L2_bands.Style2ID  = 00_L2_bands_style2.StyleID)
+    WHERE `Name` LIKE '%$band_name%'     
     
     ";
+
     $find_query = mysqli_query($dbconnect, $find_sql);
     $find_rs = mysqli_fetch_assoc($find_query);
     $count = mysqli_num_rows($find_query);
-    
 
 ?>
 
