@@ -1,77 +1,59 @@
 <?php include("topbit.php");
 
-    $app_name = mysqli_real_escape_string($dbconnect, $_POST['app_name']);
-    $developer = mysqli_real_escape_string($dbconnect, $_POST['dev_name']);
-    $genre = mysqli_real_escape_string($dbconnect, $_POST['genre']);
-    $cost = mysqli_real_escape_string($dbconnect, $_POST['cost']);
+    $band_name = mysqli_real_escape_string($dbconnect, $_POST['band_name']);
+    $country = mysqli_real_escape_string($dbconnect, $_POST['country']);
+    $style = mysqli_real_escape_string($dbconnect, $_POST['style']);
+    $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
    
     // Cost code (to handle when cost is not specified...)
-    if ($cost=="") {
-        $cost_op = ">=";
-        $cost = 0;
+    if ($formed=="") {
+        $formed_op = ">=";
+        $formed = 0;
     }
     else {
-        $cost_op = "<=";
+        $formed_op = "<=";
     }
     
 
 
-    // In App Purchases
-    if (isset($_POST['in_app'])) {
-        $in_app = 0;
+    // Popular
+    if (isset($_POST['popular'])) {
+        $popular = 0;
     }
     
     else {
-        $in_app = 1;
+        $popular = 1;
     }
 
-    // Ratings
-    $rating_more_less = mysqli_real_escape_string($dbconnect, $_POST['rate_more_less']);
-    $rating = mysqli_real_escape_string($dbconnect, $_POST['rating']);
+    // # of Fans
+    $fans_more_less = mysqli_real_escape_string($dbconnect, $_POST['fans_more_less']);
+    $fans = mysqli_real_escape_string($dbconnect, $_POST['fans']);
 
-    if ($rating == "") {$rating = 0;
-                        $rating_more_less = "at least";}// Set age to 0 if it is blank
+    if ($fans == "") {$fans = 0;
+                        $fans_more_less = "at least";}// Set fans to 0 if it is blank
     
 
-    if($rating_more_less == "at most") {
-        $rate_op = "<=";
+    if($fans_more_less == "at most") {
+        $fans_op = "<=";
     }
 
     else {
-        $rate_op = ">=";
+        $fans_op = ">=";
         
         
-    } // end rating if / elseif / else
-
-    // Age
-    $age_more_less = mysqli_real_escape_string($dbconnect, $_POST['age_more_less']);
-    $age = mysqli_real_escape_string($dbconnect, $_POST['age']);
-
-    if ($age == "") {$age = 0;
-                     $age_more_less = "at least";} // Set age to 0 if it is blank
-
-    if($age_more_less == "at most") {
-        $age_op = "<=";
-    }
-
-    else {
-        $age_op = ">=";
-        
-        
-        
-    } // end age if / elseif / else
+    } // end fans if / elseif / else
 
 
-    $find_sql = "SELECT * FROM `00_L2_games`
-    JOIN 00_L2_games_genre ON (00_L2_games.GenreID = 00_L2_games_genre.GenreID)
-    JOIN 00_L2_games_developer ON (00_L2_games.DeveloperID = 00_L2_games_developer.DeveloperID)
-    WHERE `Name` LIKE '%$app_name%'
-    AND `DevName` LIKE '%$developer%'
-    AND `Genre` LIKE '%$genre%'
-    AND `Price` $cost_op '$cost'
-    AND (`In App` = $in_app OR `In App` = 0)
-    AND `User Rating` $rate_op $rating
-    AND `Age` $age_op $age
+    $find_sql = "SELECT * FROM `00_L2_bands`
+    JOIN 00_L2_bands_country ON (00_L2_games.CountryID = 00_L2_games_country.CountryID)
+    JOIN 00_L2_bands_style ON (00_L2_bands.Style1ID = 00_L2_bands_style.StyleID)
+    WHERE `Name` LIKE '%$band_name%'
+    AND `Country` LIKE '%$country%'
+    AND `Formed` $formed_op '$formed'
+    AND (`Popular` = $popular OR `Popular` = 0)
+    AND `Style` LIKE '%$style%'
+    AND `Fans` $fans_op $fans
+    
     
     ";
     $find_query = mysqli_query($dbconnect, $find_sql);
