@@ -39,7 +39,7 @@
                 do{
                     ?>
                 
-                <option value="<?php echo $country_rs['Country']; ?>"><?php echo $country_rs['Country']; ?></option>
+                <option value="<?php echo $country_rs['country']; ?>"><?php echo $country_rs['country']; ?></option>
                 
                 <?php
                         
