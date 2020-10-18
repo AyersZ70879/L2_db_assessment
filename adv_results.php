@@ -7,15 +7,15 @@
    
 
     // Popular
-   //if (isset($_POST['popular'])) {
-    //    $popular = 0;
-   // }
+    if (isset($_POST['popular'])) {
+        $popular = 0;
+    }
     
-   // else {
-    //    $popular = 1;
-    //}
+    else {
+        $popular = 1;
+    }
 
-   // // # of Fans
+   // # of Fans
    // $fans_more_less = mysqli_real_escape_string($dbconnect, $_POST['fans_more_less']);
    // $fans = mysqli_real_escape_string($dbconnect, $_POST['fans']);
 
@@ -42,6 +42,7 @@
     WHERE `Name` LIKE '%$band_name%'     
     AND `CountryName` LIKE '%$country%'
     AND `Formed` LIKE '%$formed%'
+    AND (`Popular` = $popular OR `Popular` = 0)
     ";
 
     $find_query = mysqli_query($dbconnect, $find_sql);
@@ -68,6 +69,6 @@
 sql for above:
 
     
-    AND (`Popular` = $popular OR `Popular` = 0)
+    
     AND `Style` LIKE '%$style%'
     AND `Fans` $fans_op $fans -->
