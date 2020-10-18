@@ -2,19 +2,9 @@
 
     $band_name = mysqli_real_escape_string($dbconnect, $_POST['band_name']);
     $country = mysqli_real_escape_string($dbconnect, $_POST['country']);
-    // $style = mysqli_real_escape_string($dbconnect, $_POST['style']);
-    //$formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
+    //$style = mysqli_real_escape_string($dbconnect, $_POST['style']);
+    $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
    
-    // Formed code (to handle when formed is not specified...)
-    //if ($formed=="") {
-        //$formed_op = ">=";
-        //$formed = 0;
-   // }
-   // else {
-    //    $formed_op = "<=";
-   // }
-    
-
 
     // Popular
    //if (isset($_POST['popular'])) {
@@ -51,6 +41,7 @@
     JOIN 00_L2_bands_style2 ON (00_L2_bands.Style2ID  = 00_L2_bands_style2.StyleID)
     WHERE `Name` LIKE '%$band_name%'     
     AND `CountryName` LIKE '%$country%'
+    AND `Formed` LIKE '%$formed%'
     ";
 
     $find_query = mysqli_query($dbconnect, $find_sql);
@@ -76,7 +67,7 @@
 <!-- 
 sql for above:
 
-    AND `Formed` $formed_op '$formed'
+    
     AND (`Popular` = $popular OR `Popular` = 0)
     AND `Style` LIKE '%$style%'
     AND `Fans` $fans_op $fans -->

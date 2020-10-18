@@ -32,14 +32,16 @@
                 
             <!-- get option from database -->
                 <?php 
-                $country_sql="SELECT * FROM `00_L2_bands_country` ORDER BY `00_L2_bands_country`.`CountryName` ASC";
+                $country_sql="SELECT *
+FROM `00_L2_bands_country`
+ORDER BY `00_L2_bands_country`.`CountryName` ASC";
                 $country_query=mysqli_query($dbconnect, $country_sql);
                 $country_rs=mysqli_fetch_assoc($country_query);
                 
                 do{
                     ?>
                 
-                <option value="<?php echo $country_rs['country']; ?>"><?php echo $country_rs['country']; ?></option>
+                <option value="<?php echo $country_rs['CountryName']; ?>"><?php echo $country_rs['CountryName']; ?></option>
                 
                 <?php
                         
