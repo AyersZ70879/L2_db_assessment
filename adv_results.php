@@ -16,22 +16,22 @@
     }
 
    // # of Fans
-   // $fans_more_less = mysqli_real_escape_string($dbconnect, $_POST['fans_more_less']);
-   // $fans = mysqli_real_escape_string($dbconnect, $_POST['fans']);
+    $fans_more_less = mysqli_real_escape_string($dbconnect, $_POST['fans_more_less']);
+    $fans = mysqli_real_escape_string($dbconnect, $_POST['fans']);
 
-    //if ($fans == "") {$fans = 0;
-          //              $fans_more_less = "at least";}// Set fans to 0 if it is blank
+    if ($fans == "") {$fans = 0;
+              $fans_more_less = "at least";} // Set fans to 0 if it is blank
     
 
-    //if($fans_more_less == "at most") {
-   //     $fans_op = "<=";
-   // }
+    if($fans_more_less == "at most") {
+       $fans_op = "<=";
+    }
 
-   // else {
-   //     $fans_op = ">=";
+    else {
+        $fans_op = ">=";
         
         
-   // } // end fans if / elseif / else
+    } // end fans if / elseif / else
 
 
      $find_sql = "SELECT *
@@ -43,6 +43,7 @@
     AND `CountryName` LIKE '%$country%'
     AND `Formed` LIKE '%$formed%'
     AND (`Popular` = $popular OR `Popular` = 0)
+    AND `NumFans` $fans_op $fans
     ";
 
     $find_query = mysqli_query($dbconnect, $find_sql);
@@ -71,4 +72,4 @@ sql for above:
     
     
     AND `Style` LIKE '%$style%'
-    AND `Fans` $fans_op $fans -->
+     -->
