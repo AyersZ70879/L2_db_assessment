@@ -2,9 +2,9 @@
 
     $band_name = mysqli_real_escape_string($dbconnect, $_POST['band_name']);
     $country = mysqli_real_escape_string($dbconnect, $_POST['country']);
-    //$style = mysqli_real_escape_string($dbconnect, $_POST['style']);
+    $style = mysqli_real_escape_string($dbconnect, $_POST['style']);
     $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
-   
+  
 
     // Popular
     if (isset($_POST['popular'])) {
@@ -44,6 +44,8 @@
     AND `Formed` LIKE '%$formed%'
     AND (`Popular` = $popular OR `Popular` = 0)
     AND `NumFans` $fans_op $fans
+    AND `Style` LIKE '%$style%'
+    
     ";
 
     $find_query = mysqli_query($dbconnect, $find_sql);
@@ -66,10 +68,4 @@
         
 <?php include("bottombit.php")?>
 
-<!-- 
-sql for above:
 
-    
-    
-    AND `Style` LIKE '%$style%'
-     -->
