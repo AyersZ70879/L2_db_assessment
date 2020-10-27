@@ -3,6 +3,7 @@
     $band_name = mysqli_real_escape_string($dbconnect, $_POST['band_name']);
     $country = mysqli_real_escape_string($dbconnect, $_POST['country']);
     $style = mysqli_real_escape_string($dbconnect, $_POST['style']);
+    $style2 = mysqli_real_escape_string($dbconnect, $_POST['style2']);
     $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
   
 
@@ -45,6 +46,7 @@
     AND (`Popular` = $popular OR `Popular` = 0)
     AND `NumFans` $fans_op $fans
     AND `Style` LIKE '%$style%'
+    AND `Style2` LIKE '%$style2%' 
     
     ";
 
