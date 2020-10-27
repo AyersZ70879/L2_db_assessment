@@ -4,46 +4,57 @@
 $style_sql="SELECT * FROM `00_L2_bands_style` ORDER BY `00_L2_bands_style`.`Style` ASC";
 $style_query=mysqli_query($dbconnect, $style_sql);
 $style_rs=mysqli_fetch_assoc($style_query);
+
+$style2_sql="SELECT * FROM `00_L2_bands_style2` ORDER BY `00_L2_bands_style2`.`Style2` ASC";
+$style2_query=mysqli_query($dbconnect, $style2_sql);
+$style2_rs=mysqli_fetch_assoc($style2_query);
  
 // Initialise from variables
 
-$app_name = "";
-$subtitle = "";
-$url = "";
-$genreID = "";
-$dev_name = "";
-$age = "";
-$rating = "";
-$rate_count = "";
-$cost = "";
-$in_app = 1;
-$description = "";
+$band_name = "";
+$formed = "";
+$styleID = "";
+$style2ID = "";
+$split = 0;
+$countryID = "";
+$numfans = "";
+$popular = 1;
+
 
 $has_errors = "no";
 
 // set up error field colours / visibility (no errors at first)
-$app_error = $url_error = $dev_error = $description_error = $genre_error = $age_error = $rating_error = $count_error = "no-error";
+$band_error = $formed_error = $style_error = $style2_error = $country_error = $numfans_error = "no-error";
 
-$app_field = $url_field = $dev_field = $description_field = $genre_field = $age_field = $rating_field = $count_field = "form-ok";
+$band_field = $formed_field = $style_field = $style2_field = $country_field = $numfans_field = "form-ok";
 
 // Code below excutes when the form is submitted...
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     
 // Get values from the form
-    $app_name = mysqli_real_escape_string($dbconnect, $_POST['app_name']);
-    $subtitle = mysqli_real_escape_string($dbconnect, $_POST['subtitle']);
-    $url = mysqli_real_escape_string($dbconnect, $_POST['url']);
+    $band_name = mysqli_real_escape_string($dbconnect, $_POST['band_name']);
+    $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
     
-    $genreID = mysqli_real_escape_string($dbconnect, $_POST['genre']);
+    $styleID = mysqli_real_escape_string($dbconnect, $_POST['styles']);
+    $style2ID = mysqli_real_escape_string($dbconnect, $_POST['styles2']);
     
-    // if GenreID, is not blank, get genre so that genre box does not lose its value if there is an error
-    if ($genreID != "") {
-        $genreitem_sql = "SELECT * FROM `00_L2_games_genre` WHERE `GenreID` = $genreID";
-        $genreitem_query=mysqli_query($dbconnect, $genreitem_sql);
-        $genreitem_rs=mysqli_fetch_assoc($genreitem_query);
-        $genre = $genreitem_rs['Genre'];
+    // if StyleID, is not blank, get genre so that genre box does not lose its value if there is an error
+    if ($styleID != "") {
+        $styleitem_sql = "SELECT * FROM `00_L2_bands_style` WHERE `StyleID` = $styleID";
+        $styleitem_query=mysqli_query($dbconnect, $styleitem_sql);
+        $styleitem_rs=mysqli_fetch_assoc($styleitem_query);
+        $style = $styleitem_rs['Style'];
         
-    } //end genreID if
+    } //end styleID if
+    
+    // Style 2 ID check
+    if ($style2ID != "") {
+        $style2item_sql = "SELECT * FROM `00_L2_bands_style2` WHERE `Style2ID` = $style2ID";
+        $style2item_query=mysqli_query($dbconnect, $style2item_sql);
+        $style2item_rs=mysqli_fetch_assoc($style2item_query);
+        $style2 = $style2item_rs['Style2'];
+        
+    } //end style2ID if
     
     
     $dev_name = mysqli_real_escape_string($dbconnect, $_POST['dev_name']);
