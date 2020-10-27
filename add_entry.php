@@ -37,6 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $styleID = mysqli_real_escape_string($dbconnect, $_POST['styles']);
     $style2ID = mysqli_real_escape_string($dbconnect, $_POST['styles2']);
+    $countryID = mysqli_real_escape_string($dbconnect, $_POST['country']);
     
     // if StyleID, is not blank, get genre so that genre box does not lose its value if there is an error
     if ($styleID != "") {
@@ -56,68 +57,63 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         
     } //end style2ID if
     
+    // if CountryID, is not blank, get genre so that genre box does not lose its value if there is an error
+    if ($countryID != "") {
+        $countryitem_sql = "SELECT * FROM `00_L2_bands_country` WHERE `CountryID` = $countryID";
+        $countryitem_query=mysqli_query($dbconnect, $countryitem_sql);
+        $scountryitem_rs=mysqli_fetch_assoc($countryitem_query);
+        $country = $countryitem_rs['Country'];
+        
+    } //end CountryID if
     
-    $dev_name = mysqli_real_escape_string($dbconnect, $_POST['dev_name']);
-    $age = mysqli_real_escape_string($dbconnect, $_POST['age']);
-    $rating = mysqli_real_escape_string($dbconnect, $_POST['rating']);
-    $rate_count = mysqli_real_escape_string($dbconnect, $_POST['count']);
-    $cost = mysqli_real_escape_string($dbconnect, $_POST['price']);
-    $in_app = mysqli_real_escape_string($dbconnect, isset($_POST['in_app']));
-    $description = mysqli_real_escape_string($dbconnect, $_POST['description']);
+    
+    $split = mysqli_real_escape_string($dbconnect, $_POST['split']);
+    $numfans = mysqli_real_escape_string($dbconnect, $_POST['numfans']);
+    $popular = mysqli_real_escape_string($dbconnect, isset($_POST['popular']));
+   
     
     // error checking will go here
     
-    // Check App Name is not blank
-    if ($app_name == "") {
+    // Check Band Name is not blank
+    if ($band_name == "") {
         $has_errors = "yes";
-        $app_error = "error-text";
-        $app_field = "form-error";
+        $band_error = "error-text";
+        $band_field = "form-error";
     }
     
-    // Check dev_name
-    if ($dev_name == "") {
+    // Check formed
+    if ($formed == "") {
         $has_errors = "yes";
-        $dev_error = "error-text";
-        $dev_field = "form-error";
+        $formed_error = "error-text";
+        $formed_field = "form-error";
     }
     
-    // Check genre entry
-    if ($genreID == "") {
+    // Check style entry
+    if ($styleID == "") {
         $has_errors = "yes";
-        $genre_error = "error-text";
-        $genre_field = "form-error";
+        $style_error = "error-text";
+        $style_field = "form-error";
     }
     
-    // check url entry
-    
-    // Remove all illegal characters from a url
-    $url = filter_var($url, FILTER_SANITIZE_URL);
-    
-    if (filter_var($url, FILTER_VALIDATE_URL) == false) {
+    // Check style2 entry
+    if ($style2ID == "") {
         $has_errors = "yes";
-        $url_error = "error-text";
-        $url_field = "form-error";
+        $style2_error = "error-text";
+        $style2_field = "form-error";
     }
     
-    // check rating is a decimal between 0 and 5
-    if (!is_numeric($rating) || $rating < 0 || $rating > 5) {
+    // Check country entry
+    if ($countryID == "") {
         $has_errors = "yes";
-        $rating_error = "error-text";
-        $rating_field = "form-error";
+        $country_error = "error-text";
+        $country_field = "form-error";
     }
-    
-    // check number of ratings is an integer that is more than 0
-    if (!ctype_digit($rate_count) || $rate_count < 1) {
+ 
+    // check number of fans is an integer that is more than 0
+    if (!ctype_digit($numfans) || $numfans < 1) {
         $has_errors = "yes";
         $count_error = "error-text";
         $count_field = "form-error";
-    }
-    
-    // check description entry
-    if ($description == "") {
-        $has_errors = "yes";
-        $description_error = "error-text";
-        $description_field = "form-error";
     }
     
     // if there are no errors
@@ -127,23 +123,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             // Go to success page
             header('Location: add_success.php');
         
-            // get developer ID if it exists
-            $dev_sql ="SELECT *
-FROM `00_L2_games_developer`
-WHERE `DevName` LIKE '$dev_name'";
-            $dev_query=mysqli_query($dbconnect, $dev_sql);
-            $dev_rs=mysqli_fetch_assoc($dev_query);
-            $dev_count=mysqli_num_rows($dev_query);
+            // get country ID if it exists
+            $country_sql ="SELECT *
+FROM `00_L2_bands_country`
+WHERE `CountryName` LIKE '$country'";
+            $country_query=mysqli_query($dbconnect, $country_sql);
+            $country_rs=mysqli_fetch_assoc($country_query);
+            $country_count=mysqli_num_rows($country_query);
 
-            // if developer not already in developer table, add them and get the 'new' developerID
-        if ($dev_count > 0) {
-            $developerID = $dev_rs['DeveloperID'];
+            // if country not already in country table, add them and get the 'new' countryID
+        if ($country_count > 0) {
+            $countryID = $country_rs['CountryID'];
         }
 
         else {
-            $add_dev_sql ="INSERT INTO `ayersz70879`.`00_L2_games_developer` (
-`DeveloperID` ,
-`DevName`
+            $add_dev_sql ="INSERT INTO `ayersz70879`.`00_L2_bands_country` (
+`CountryID` ,
+`CountryName`
 )
 VALUES (
 NULL , '$dev_name'
@@ -151,30 +147,31 @@ NULL , '$dev_name'
             $add_dev_query = mysqli_query($dbconnect,$add_dev_sql);
 
         // Get developer ID
-        $newdev_sql = "SELECT *
-FROM `00_L2_games_developer`
-WHERE `DevName` LIKE '$dev_name'";
-        $newdev_query=mysqli_query($dbconnect, $newdev_sql);
-        $newdev_rs=mysqli_fetch_assoc($newdev_query);
+        $newcountry_sql = "SELECT *
+FROM `00_L2_bands_country`
+WHERE `CountryName` LIKE '$country'";
+        $newcountry_query=mysqli_query($dbconnect, $newcountry_sql);
+        $newcountry_rs=mysqli_fetch_assoc($newcountry_query);
 
-        $developerID = $newdev_rs['DeveloperID'];
+        $countryID = $newcountry_rs['CountryID'];
 
-        } // end adding developer to developer table
+        } // end adding country to country table
 
         // Add entry to database
-        $addentry_sql = "INSERT INTO `ayersz70879`.`00_L2_games` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`, `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', '$subtitle', '$url', '$genreID', '$developerID', '$age', '$rating', '$rate_count', '$cost', '$in_app', '$description');";
+        $addentry_sql = "INSERT INTO `ayersz70879`.`00_L2_bands` (`ID`, `Name`, `Formed`, `Split`, `Popular`, `CountryID`, `NumFans`, `Style1ID`, Style2ID`) VALUES (NULL, '$band_name', '$formed', '$split', '$popular', '$countryID', '$numfans', '$styleID', '$style2ID');";
         $addentry_query=mysqli_query($dbconnect,$addentry_sql);
     
         // Get ID for next page
         $getid_sql = "SELECT *
-FROM `00_L2_games`
-WHERE `Name` LIKE '$app_name'
-AND `Subtitle` LIKE '$subtitle'
-AND `URL` LIKE '$url'
-AND `GenreID` = $genreID
-AND `DeveloperID` = $developerID
-AND `Age` = $age
-AND `User Rating` = $rating
+FROM `00_L2_bands`
+WHERE `Name` LIKE '$band_name'
+AND `Formed` LIKE '$formed'
+AND `Split` LIKE '$split'
+AND `Popular` = $popular
+AND `Style1ID` = $styleID
+AND `Style2ID` = $style2ID
+AND `CountryID` = $countryID
+
 AND `Rating Count` = $rate_count
 AND `Price` = $cost
 AND `In App` = $in_app
