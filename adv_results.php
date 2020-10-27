@@ -44,7 +44,7 @@
     AND `Formed` LIKE '%$formed%'
     AND (`Popular` = $popular OR `Popular` = 0)
     AND `NumFans` $fans_op $fans
-    AND `Style` or `Style2` LIKE '%$style%'
+    AND `Style` LIKE '%$style%'
     
     ";
 

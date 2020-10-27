@@ -78,7 +78,7 @@ ORDER BY `00_L2_bands_country`.`CountryName` ASC";
                 
             <!-- get option from database -->
                 <?php 
-                $style_sql="SELECT * FROM `00_L2_bands_style` ORDER BY `00_L2_bands_style`.`Style` ASC";
+                $style_sql="SELECT * FROM `00_L2_bands_style` ORDER BY `00_L2_bands_style`.`Style` ASC ";
                 $style_query=mysqli_query($dbconnect, $style_sql);
                 $style_rs=mysqli_fetch_assoc($style_query);
                 
