@@ -49,7 +49,7 @@
                     <!-- Split -->
                     
                     <?php
-                    if($find_rs['Split'] > 0) 
+                    if($find_rs['Split'] != 0) 
                     {
                       ?>
                 <i>- (The band has split)</i>
@@ -74,17 +74,7 @@
                     if($find_rs['Popular'] == 0) 
                     {
                       ?>
-                <p>The band is: Popluar 
-                    <?php 
-                        if($find_rs['Popular'] == 1) 
-                        {
-                            ?>
-                                The band is: Less Known
-                            
-                           <?php
-                           
-                        } // end less Popular
-                    ?>
+                <p>The band is <b>Popluar</b>
                     
                 </p>
                 <?php

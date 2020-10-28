@@ -35,8 +35,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $band_name = mysqli_real_escape_string($dbconnect, $_POST['band_name']);
     $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
     
-    $styleID = mysqli_real_escape_string($dbconnect, $_POST['styles']);
-    $style2ID = mysqli_real_escape_string($dbconnect, $_POST['styles2']);
+    $styleID = mysqli_real_escape_string($dbconnect, $_POST['style']);
+    $style2ID = mysqli_real_escape_string($dbconnect, $_POST['style2']);
     $countryID = mysqli_real_escape_string($dbconnect, $_POST['country']);
     
     // if StyleID, is not blank, get genre so that genre box does not lose its value if there is an error
@@ -61,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($countryID != "") {
         $countryitem_sql = "SELECT * FROM `00_L2_bands_country` WHERE `CountryID` = $countryID";
         $countryitem_query=mysqli_query($dbconnect, $countryitem_sql);
-        $scountryitem_rs=mysqli_fetch_assoc($countryitem_query);
+        $countryitem_rs=mysqli_fetch_assoc($countryitem_query);
         $country = $countryitem_rs['Country'];
         
     } //end CountryID if
@@ -196,40 +196,36 @@ AND `In App` = $in_app
             <form method="post" enctype="multipart/form-data" 
                   action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                 
-                <!-- App Name (Required) -->
-                <div class="<?php echo $app_error; ?>">
-                    Please fill in the 'App Name' field
+                <!-- Band Name (Required) -->
+                <div class="<?php echo $band_error; ?>">
+                    Please fill in the 'Band Name' field
                 </div>
                 
-                <input class="add-field <?php echo $app_field; ?>" type="text" name="app_name" value="<?php echo $app_name; ?>" placeholder="App Name (required) ..." />
+                <input class="add-field <?php echo $band_field; ?>" type="text" name="band_name" value="<?php echo $band_name; ?>" placeholder="Band Name (required) ..." />
                 
                 <br />
                 
-                <!-- Subtitle (optional) -->
-                <input class="add-field" type="text" name="subtitle" value="<?php echo $subtitle; ?>" placeholder="Subtitle (optional) ..." />
+                <!-- Formed -->
+                <div class="<?php echo $formed_error; ?>">
+                    Please fill in the 'Formed' field
+                </div>
+                
+                <input class="add-field <?php echo $formed; ?>" type="text" name="formed" value="<?php echo $formed; ?>" placeholder="Formed (required) ..." />
                 
                 <br />
                 
-                <!-- URL (required, must start http://) -->
-                <div class="<?php echo $url_error; ?>">
-                    Please enter a valid 'URL' in the field
+                
+                <!-- Style dropdown (required) -->
+                <div class="<?php echo $style_error; ?>">
+                    Please choose a 'Style'
                 </div>
-                
-                <input class="add-field <?php echo $url_field; ?>" type="text" name="url" value="<?php echo $url; ?>" placeholder="URL (required) ..." />
-                
-                <br />
-                
-                <!-- Genre dropdown (required) -->
-                <div class="<?php echo $genre_error; ?>">
-                    Please choose a 'Genre'
-                </div>
-                <select class="adv <?php echo $genre_field; ?>" name="genre">
+                <select class="adv <?php echo $style_field; ?>" name="style">
                     <!-- first / selected option -->
                     
                     <?php 
-                    if($genreID=="") {
+                    if($styleID=="") {
                         ?>
-                    <option value="" selected>Genre (Choose something)...</option>
+                    <option value="" selected>Style (Choose something)...</option>
                     
                     <?php
                         
@@ -237,7 +233,7 @@ AND `In App` = $in_app
                     
                     else {
                        ?> 
-                    <option value="<?php echo $genreID; ?>" selected><?php echo $genre; ?></option>
+                    <option value="<?php echo $styleID; ?>" selected><?php echo $style; ?></option>
                     <?php 
                     }
                     ?>
@@ -247,69 +243,94 @@ AND `In App` = $in_app
                     
                     do {
                         ?>
-                    <option value="<?php echo $genre_rs['GenreID']; ?>"><?php echo $genre_rs['Genre']; ?></option>
+                    <option value="<?php echo $style_rs['Style']; ?>"><?php echo $style_rs['Style']; ?></option>
                     
                     <?php
-                    } // end genre do loop
-                    while ($genre_rs=mysqli_fetch_assoc($genre_query))
+                    } // end style do loop
+                    while ($style_rs=mysqli_fetch_assoc($style_query))
                     ?>
                         
                 </select>
                 
                 <br />
                 
-                <!-- Developer Name (required) -->
-                <div class="<?php echo $dev_error; ?>">
-                    Please enter in the 'Developer'
+                <!-- Style 2 dropdown (required) -->
+                <div class="<?php echo $style2_error; ?>">
+                    Please choose a 'Style' - (if no style wanted choose the blank option)
                 </div>
-                <input class="add-field <?php echo $dev_field; ?>" type="text" name="dev_name" value="<?php echo $dev_name; ?>" placeholder="Developer Name (required) ..." />
+                <select class="adv <?php echo $style2_field; ?>" name="style2">
+                    <!-- first / selected option -->
+                    
+                    <?php 
+                    if($style2ID=="") {
+                        ?>
+                    <option value="" selected>2nd Style (Choose something)...</option>
+                    
+                    <?php
+                        
+                    }
+                    
+                    else {
+                       ?> 
+                    <option value="<?php echo $style2ID; ?>" selected><?php echo $style2; ?></option>
+                    <?php 
+                    }
+                    ?>
+                    
+                    <!-- get options from database -->
+                    <?php
+                    
+                    do {
+                        ?>
+                    <option value="<?php echo $style2_rs['Style2']; ?>"><?php echo $style2_rs['Style2']; ?></option>
+                    
+                    <?php
+                    } // end style2 do loop
+                    while ($style2_rs=mysqli_fetch_assoc($style2_query))
+                    ?>
+                        
+                </select>
                 
                 <br />
                 
-                <!-- Age (set to 0 if left blank) -->
-                <input class="add-field" type="text" name="age" value="<?php echo $age; ?>" placeholder="Age (0 for all) ..." />
+                
+                <!-- Country (required) -->
+                <div class="<?php echo $country_error; ?>">
+                    Please enter in the 'Country'
+                </div>
+                <input class="add-field <?php echo $country_field; ?>" type="text" name="country" value="<?php echo $country; ?>" placeholder="Originating Country (required) ..." />
                 
                 <br />
                 
-                <!-- Rating (Number between 0-5, 1 dp) -->
-                <div class="<?php echo $rating_error; ?>">
-                    Please enter a decimal between 1 and 5
-                </div>
-                <div>
-                    <input class="add-field <?php echo $rating_field; ?>" type="text" name="rating" value="<?php echo $rating; ?>" step="0.1" min="0" max="5" placeholder="Rating (0-5)" />
-                </div>
                 
-                
-                <!-- # of ratings (integer more than 0) -->
-                <div class="<?php echo $count_error; ?>">
+                <!-- # of fans (integer more than 0) -->
+                <div class="<?php echo $numfans_error; ?>">
                     Please enter a decimal more than 0
                 </div>
-                <input class="add-field <?php echo $count_field; ?>" type="text" name="count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings ..." />
-                
-                <br />
+                <input class="add-field <?php echo $numfans_field; ?>" type="text" name="numfans" value="<?php echo $numfans; ?>" placeholder="# of Fans ..." />
                 
                 
-                <!-- Cost (Decimal 2dp, must be more than 0) -->
-                <input class="add-field" type="text" name="price" value="<?php echo $cost; ?>" placeholder="Cost (number only) ..." />
                 
                 <br /><br />
                 
-                <!-- In App Purchase box -->
+                <!-- Split box -->
                 
                 <div>
                 
-                <input class="adv-txt" type="checkbox" name="in_app" value="0">No In App Purchases
+                <input class="adv-txt" type="checkbox" name="split" value="1">Band has split
 
                 </div>
                 
                 
-                <br /> 
+                
                                 
-                <!-- Description text area -->
-                <div class="<?php echo $description_error; ?>">
-                    Please enter a valid 'Description'
+                <!-- Popular box -->
+                
+                <div>
+                
+                <input class="adv-txt" type="checkbox" name="popular" value="0">Band is popular (well known)
+
                 </div>
-                <textarea class="add-field <?php echo $description_field; ?>" name="description" placeholder="Description..." rows="6"><?php echo $description; ?></textarea>
                           
                 <!-- Submit Button -->
                 <p>
