@@ -49,7 +49,7 @@
                     <!-- Split -->
                     
                     <?php
-                    if($find_rs['Split'] != 0) 
+                    if($find_rs['Split'] == 1 ) 
                     {
                       ?>
                 <i>- (The band has split)</i>

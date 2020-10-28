@@ -317,7 +317,7 @@ AND `In App` = $in_app
                 
                 <div>
                 
-                <input class="adv-txt" type="checkbox" name="split" value="1">Band has split
+                <input class="adv-txt" type="checkbox" name="split" value="1">Band is still together
 
                 </div>
                 
