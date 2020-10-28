@@ -72,6 +72,7 @@ ORDER BY `00_L2_bands_country`.`CountryName` ASC";
                 
             <br />
             <!-- Split Checkbox -->
+                
             <input class="adv-txt" type="checkbox" name="split" value="0">Band is still together
                 
             <!-- Styles -->
