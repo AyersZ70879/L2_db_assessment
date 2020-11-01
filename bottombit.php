@@ -21,38 +21,12 @@
                 
             <form class="searchform" method="post" action="adv_results.php" enctype="multipart/form-data">
             
-            <input class="adv" type="text" name="band_name" sixe="40" value="" placeholder="Band Name"/>
+            <input class="adv" type="text" name="band_name" size="40" value="" placeholder="Band Name"/>
             
                 
-            <!-- Country Dropdown -->
+            <!-- Country  -->
             
-            <select class="search adv" name="country">
-                
-            <option value="" selected>Country...</option>
-                
-            <!-- get option from database -->
-                <?php 
-                $country_sql="SELECT *
-FROM `00_L2_bands_country`
-ORDER BY `00_L2_bands_country`.`CountryName` ASC";
-                $country_query=mysqli_query($dbconnect, $country_sql);
-                $country_rs=mysqli_fetch_assoc($country_query);
-                
-                do{
-                    ?>
-                
-                <option value="<?php echo $country_rs['CountryName']; ?>"><?php echo $country_rs['CountryName']; ?></option>
-                
-                <?php
-                        
-                    
-                } // end country do loop
-                
-                while($country_rs=mysqli_fetch_assoc($country_query))
-                
-                ?>
-                
-            </select>  
+            <input class="adv" type="text" name="country" size="40" value="" placeholder="Originating Country"/>  
                 
             <!-- Formed -->
             <div class="flex-container">

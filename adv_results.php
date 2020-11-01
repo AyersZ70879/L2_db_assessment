@@ -4,7 +4,7 @@
     $country = mysqli_real_escape_string($dbconnect, $_POST['country']);
     $style = mysqli_real_escape_string($dbconnect, $_POST['styles']);
     $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
-    $split = mysqli_real_escape_string($dbconnect, $_POST['split']);
+   
 
     // Popular
     if (isset($_POST['popular'])) {
@@ -13,6 +13,15 @@
     
     else {
         $popular = 1;
+    }
+
+// Split
+    if (isset($_POST['split'])) {
+        $split = 0;
+    }
+    
+    else {
+        $split = 1;
     }
 
    // # of Fans

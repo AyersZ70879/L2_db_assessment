@@ -35,6 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $band_name = mysqli_real_escape_string($dbconnect, $_POST['band_name']);
     $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
     
+    
     $styleID = mysqli_real_escape_string($dbconnect, $_POST['style']);
     $style2ID = mysqli_real_escape_string($dbconnect, $_POST['style2']);
     $countryID = mysqli_real_escape_string($dbconnect, $_POST['country']);
@@ -67,8 +68,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     } //end CountryID if
     
     
-    $split = mysqli_real_escape_string($dbconnect, $_POST['split']);
+    
     $numfans = mysqli_real_escape_string($dbconnect, $_POST['numfans']);
+    $split = mysqli_real_escape_string($dbconnect, $_POST['split']);
     $popular = mysqli_real_escape_string($dbconnect, isset($_POST['popular']));
    
     
@@ -103,7 +105,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Check country entry
-    if ($countryID == "") {
+    if ($country == "") {
         $has_errors = "yes";
         $country_error = "error-text";
         $country_field = "form-error";
@@ -115,7 +117,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $count_error = "error-text";
         $count_field = "form-error";
     }
-    
     // if there are no errors
     if ($has_errors == "no") {
     
@@ -171,10 +172,8 @@ AND `Popular` = $popular
 AND `Style1ID` = $styleID
 AND `Style2ID` = $style2ID
 AND `CountryID` = $countryID
+AND `NumFans` = $numfans
 
-AND `Rating Count` = $rate_count
-AND `Price` = $cost
-AND `In App` = $in_app
 ";
         $getid_query=mysqli_query($dbconnect, $getid_sql);
         $getid_rs=mysqli_fetch_assoc($getid_query);
@@ -298,7 +297,7 @@ AND `In App` = $in_app
                 <div class="<?php echo $country_error; ?>">
                     Please enter in the 'Country'
                 </div>
-                <input class="add-field <?php echo $country_field; ?>" type="text" name="country" value="<?php echo $country; ?>" placeholder="Originating Country (required) ..." />
+                <input class="add-field <?php echo $country_field; ?>" type="text" name="country" value="<?php echo $country; ?>" placeholder="Originating Country (required)..." />
                 
                 <br />
                 
