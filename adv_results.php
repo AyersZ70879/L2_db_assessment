@@ -4,7 +4,7 @@
     $country = mysqli_real_escape_string($dbconnect, $_POST['country']);
     $style = mysqli_real_escape_string($dbconnect, $_POST['styles']);
     $formed = mysqli_real_escape_string($dbconnect, $_POST['formed']);
-  
+    $split = mysqli_real_escape_string($dbconnect, $_POST['split']);
 
     // Popular
     if (isset($_POST['popular'])) {
@@ -42,6 +42,7 @@
     WHERE `Name` LIKE '%$band_name%'     
     AND `CountryName` LIKE '%$country%'
     AND `Formed` LIKE '%$formed%'
+    AND `Split` LIKE  '%$split%'
     AND (`Popular` = $popular OR `Popular` = 0)
     AND `NumFans` $fans_op $fans
     AND `Style` LIKE '%$style%'
