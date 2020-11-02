@@ -58,16 +58,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         
     } //end style2ID if
     
-    // if CountryID, is not blank, get country so that country box does not lose its value if there is an error
-    if ($countryID != "") {
-        $countryitem_sql = "SELECT * FROM `00_L2_bands_country` WHERE `CountryID` = $countryID";
-        $countryitem_query=mysqli_query($dbconnect, $countryitem_sql);
-        $countryitem_rs=mysqli_fetch_assoc($countryitem_query);
-        $country = $countryitem_rs['CountryName'];
-        
-    } //end CountryID if
-    
-    
     
     $numfans = mysqli_real_escape_string($dbconnect, $_POST['numfans']);
     $split = mysqli_real_escape_string($dbconnect, isset($_POST['split']));
@@ -114,9 +104,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // check number of fans is an integer that is more than 0
     if (!ctype_digit($numfans) || $numfans < 1) {
         $has_errors = "yes";
-        $count_error = "error-text";
-        $count_field = "form-error";
+        $numfans_error = "error-text";
+        $numfans_field = "form-error";
     }
+    
     // if there are no errors
     if ($has_errors == "no") {
     
