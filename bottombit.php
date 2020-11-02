@@ -36,7 +36,7 @@
                 </div> <!-- / formed label -->
                 
                 <div>
-                    <input class="adv-formed" type="text" name="formed" value="" placeholder="Band Formed..."/>
+                    <input class="adv" type="text" name="formed" size="4" value="" placeholder="Band Formed..."/>
                 </div> <!-- / input box -->
                 
             </div> <!-- / formed flexbox -->

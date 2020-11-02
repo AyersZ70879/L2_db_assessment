@@ -73,8 +73,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $band_field = "form-error";
     }
     
-    // Check formed
-    if ($formed == "") {
+    // check formed is an integer that is more than 0
+    if (!ctype_digit($formed) || $formed < 1) {
         $has_errors = "yes";
         $formed_error = "error-text";
         $formed_field = "form-error";
@@ -86,14 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $style_error = "error-text";
         $style_field = "form-error";
     }
-    
-    // Check style2 entry
-    if ($style2ID == "") {
-        $has_errors = "yes";
-        $style2_error = "error-text";
-        $style2_field = "form-error";
-    }
-    
+
     // Check country entry
     if ($country == "") {
         $has_errors = "yes";
@@ -197,10 +190,10 @@ AND `NumFans` = $numfans
                 
                 <!-- Formed -->
                 <div class="<?php echo $formed_error; ?>">
-                    Please fill in the 'Formed' field
+                    Please fill in the 'Formed' with a decimal more than 0
                 </div>
                 
-                <input class="add-field <?php echo $formed; ?>" type="text" name="formed" value="<?php echo $formed; ?>" placeholder="Formed (required) ..." />
+                <input class="add-field <?php echo $formed_field; ?>" type="text" name="formed" value="<?php echo $formed; ?>" placeholder="Formed (required) ..." />
                 
                 <br />
                 
@@ -245,9 +238,6 @@ AND `NumFans` = $numfans
                 <br />
                 
                 <!-- Style 2 dropdown (required) -->
-                <div class="<?php echo $style2_error; ?>">
-                    Please choose a 'Style' - (if no style wanted choose the blank option)
-                </div>
                 <select class="adv <?php echo $style2_field; ?>" name="style2">
                     <!-- first / selected option -->
                     
