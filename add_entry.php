@@ -15,8 +15,8 @@ $band_name = "";
 $formed = "";
 $styleID = "";
 $style2ID = "";
-$split = 0;
-$countryID = "";
+$split = 1;
+$country = "";
 $numfans = "";
 $popular = 1;
 
@@ -38,9 +38,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $styleID = mysqli_real_escape_string($dbconnect, $_POST['style']);
     $style2ID = mysqli_real_escape_string($dbconnect, $_POST['style2']);
-    $countryID = mysqli_real_escape_string($dbconnect, $_POST['country']);
+    $country = mysqli_real_escape_string($dbconnect, $_POST['country']);
     
-    // if StyleID, is not blank, get style so that genre box does not lose its value if there is an error
+    // if StyleID, is not blank, get style so that style box does not lose its value if there is an error
     if ($styleID != "") {
         $styleitem_sql = "SELECT * FROM `00_L2_bands_style` WHERE `StyleID` = $styleID";
         $styleitem_query=mysqli_query($dbconnect, $styleitem_sql);
@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
     $numfans = mysqli_real_escape_string($dbconnect, $_POST['numfans']);
-    $split = mysqli_real_escape_string($dbconnect, $_POST['split']);
+    $split = mysqli_real_escape_string($dbconnect, isset($_POST['split']));
     $popular = mysqli_real_escape_string($dbconnect, isset($_POST['popular']));
    
     
