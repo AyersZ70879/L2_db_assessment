@@ -15,7 +15,7 @@
         $popular = 1;
     }
 
-// Split
+    // Split
     if (isset($_POST['split'])) {
         $split = 0;
     }
@@ -52,7 +52,7 @@
     AND `CountryName` LIKE '%$country%'
     AND `Formed` LIKE '%$formed%'
     AND `Split` LIKE  '%$split%'
-    AND (`Popular` = $popular OR `Popular` = 0)
+    AND `Popular` LIKE  '%$popular%'
     AND `NumFans` $fans_op $fans
     AND `Style` LIKE '%$style%'
     

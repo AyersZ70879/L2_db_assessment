@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $style2ID = mysqli_real_escape_string($dbconnect, $_POST['style2']);
     $countryID = mysqli_real_escape_string($dbconnect, $_POST['country']);
     
-    // if StyleID, is not blank, get genre so that genre box does not lose its value if there is an error
+    // if StyleID, is not blank, get style so that genre box does not lose its value if there is an error
     if ($styleID != "") {
         $styleitem_sql = "SELECT * FROM `00_L2_bands_style` WHERE `StyleID` = $styleID";
         $styleitem_query=mysqli_query($dbconnect, $styleitem_sql);
@@ -58,12 +58,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         
     } //end style2ID if
     
-    // if CountryID, is not blank, get genre so that genre box does not lose its value if there is an error
+    // if CountryID, is not blank, get country so that country box does not lose its value if there is an error
     if ($countryID != "") {
         $countryitem_sql = "SELECT * FROM `00_L2_bands_country` WHERE `CountryID` = $countryID";
         $countryitem_query=mysqli_query($dbconnect, $countryitem_sql);
         $countryitem_rs=mysqli_fetch_assoc($countryitem_query);
-        $country = $countryitem_rs['Country'];
+        $country = $countryitem_rs['CountryName'];
         
     } //end CountryID if
     
