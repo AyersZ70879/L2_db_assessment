@@ -299,8 +299,8 @@ AND `NumFans` = $numfans
                 
                 <div>
                 
-                <input type="hidden" name="split" value="0" />
-                <input class="adv-txt" type="checkbox" name="split" value="1">Band is still together
+                <input type="hidden" name="split" value="1" />
+                <input class="adv-txt" type="checkbox" name="split" value="0">Band is still together
 
                 </div>
                 
