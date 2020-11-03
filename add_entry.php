@@ -1,6 +1,6 @@
 <?php include("topbit.php");
 
-// Get Genre list from database
+// Get style list from database
 $style_sql="SELECT * FROM `00_L2_bands_style` ORDER BY `00_L2_bands_style`.`Style` ASC";
 $style_query=mysqli_query($dbconnect, $style_sql);
 $style_rs=mysqli_fetch_assoc($style_query);
@@ -299,7 +299,7 @@ AND `NumFans` = $numfans
                 
                 <div>
                 
-                <input class="adv-txt" type="checkbox" name="split" value="0">Band is still together
+                <input class="adv-txt" type="checkbox" name="split" value="1">Band is still together
 
                 </div>
                 
@@ -310,7 +310,7 @@ AND `NumFans` = $numfans
                 
                 <div>
                 
-                <input class="adv-txt" type="checkbox" name="popular" value="1">Band is popular (well known)
+                <input class="adv-txt" type="checkbox" name="popular" value="0">Band is popular (well known)
 
                 </div>
                           
