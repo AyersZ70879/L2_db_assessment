@@ -299,7 +299,7 @@ AND `NumFans` = $numfans
                 
                 <div>
                 
-                <input class="adv-txt" type="checkbox" name="split" value="1">Band is still together
+                <input class="adv-txt" type="checkbox" name="split" value="0">Band is still together
 
                 </div>
                 
@@ -310,7 +310,7 @@ AND `NumFans` = $numfans
                 
                 <div>
                 
-                <input class="adv-txt" type="checkbox" name="popular" value="0">Band is popular (well known)
+                <input class="adv-txt" type="checkbox" name="popular" value="1">Band is popular (well known)
 
                 </div>
                           
