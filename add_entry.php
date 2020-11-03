@@ -144,7 +144,7 @@ WHERE `CountryName` LIKE '$country'";
 
         
         // Add entry to database
-        $addentry_sql = "INSERT INTO `00_L2_bands`(`ID`, `Name`, `Formed`, `Split`, `Popular`, `CountryID`, `NumFans`, `Style1ID`, `Style2ID`) VALUES (NULL, '$band_name' , '$formed' , '$split' , '$popular, '$countryID' , '$numfans' , '$styleID' , '$style2ID' );";
+        $addentry_sql = "INSERT INTO `ayersz70879`.`00_L2_bands`(`ID`, `Name`, `Formed`, `Split`, `Popular`, `CountryID`, `NumFans`, `Style1ID`, `Style2ID`) VALUES (NULL, '$band_name', '$formed', '$split', '$popular', '$countryID', '$numfans', '$styleID', '$style2ID');";
         
         $addentry_query=mysqli_query($dbconnect,$addentry_sql);
     
