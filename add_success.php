@@ -3,10 +3,11 @@
     // retrieves information...
     $ID = $_SESSION['ID'];
 
-    $find_sql = "SELECT * FROM `00_L2_bands`
-    JOIN 00_L2_bands_style ON (00_L2_bands.Style1ID = 00_L2_bands_style.StyleID)
-    JOIN 00_L2_bands_style2 ON (00_L2_bands.Style2ID = 00_L2_bands_style.StyleID)
+    $find_sql = "SELECT *
+    FROM `00_L2_bands`
     JOIN 00_L2_bands_country ON (00_L2_bands.CountryID = 00_L2_bands_country.CountryID)
+    JOIN 00_L2_bands_style ON (00_L2_bands.Style1ID  = 00_L2_bands_style.StyleID)
+    JOIN 00_L2_bands_style2 ON (00_L2_bands.Style2ID  = 00_L2_bands_style2.StyleID)
     WHERE `ID` = '$ID'
     ";
     
