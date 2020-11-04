@@ -228,7 +228,7 @@ AND `NumFans` = $numfans
                     
                     do {
                         ?>
-                    <option value="<?php echo $style_rs['Style']; ?>"><?php echo $style_rs['Style']; ?></option>
+                    <option value="<?php echo $style_rs['StyleID']; ?>"><?php echo $style_rs['Style']; ?></option>
                     
                     <?php
                     } // end style do loop
@@ -264,7 +264,7 @@ AND `NumFans` = $numfans
                     
                     do {
                         ?>
-                    <option value="<?php echo $style2_rs['Style2']; ?>"><?php echo $style2_rs['Style2']; ?></option>
+                    <option value="<?php echo $style2_rs['Style2ID']; ?>"><?php echo $style2_rs['Style2']; ?></option>
                     
                     <?php
                     } // end style2 do loop
