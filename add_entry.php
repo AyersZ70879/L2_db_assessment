@@ -60,8 +60,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
     $numfans = mysqli_real_escape_string($dbconnect, $_POST['numfans']);
-    $split = mysqli_real_escape_string($dbconnect, isset($_POST['split']));
-    $popular = mysqli_real_escape_string($dbconnect, isset($_POST['popular']));
+    $split = mysqli_real_escape_string($dbconnect, $_POST['split']);
+    $popular = mysqli_real_escape_string($dbconnect, $_POST['popular']);
    
     
     // error checking will go here
@@ -310,7 +310,7 @@ AND `NumFans` = $numfans
                 <!-- Popular box -->
                 
                 <div>
-                
+                <input type="hidden" name="popular" value="1" />
                 <input class="adv-txt" type="checkbox" name="popular" value="0">Band is popular (well known)
 
                 </div>
