@@ -151,14 +151,8 @@ WHERE `CountryName` LIKE '$country'";
         // Get ID for next page
         $getid_sql = "SELECT *
 FROM `00_L2_bands`
-WHERE `Name` LIKE '$band_name'
-AND `Formed` = $formed
-AND `Split` = $split
-AND `Popular` = $popular
-AND `Style1ID` = $styleID
-AND `Style2ID` = $style2ID
-AND `CountryID` = $countryID
-AND `NumFans` = $numfans
+WHERE `Name` LIKE '%a%'
+ORDER BY `00_L2_bands`.`ID` DESC
 
 ";
         $getid_query=mysqli_query($dbconnect, $getid_sql);
@@ -166,6 +160,7 @@ AND `NumFans` = $numfans
         
         $ID = $getid_rs['ID'];
         $_SESSION['ID']=$ID;
+        echo "ID: ".$ID;
         
     }   // end of 'no errors' if
 
