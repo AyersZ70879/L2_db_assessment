@@ -290,6 +290,13 @@ ORDER BY `00_L2_bands`.`ID` DESC
                 
                 <br /><br />
                 
+                <!-- Popular box -->
+                
+                <div>
+                <input type="hidden" name="popular" value="1" />
+                <input class="adv-txt" type="checkbox" name="popular" value="0">Band is popular (well known)
+
+                </div>
                 
                 <!-- Split box -->
                 
@@ -303,13 +310,7 @@ ORDER BY `00_L2_bands`.`ID` DESC
                 
                 
                                 
-                <!-- Popular box -->
                 
-                <div>
-                <input type="hidden" name="popular" value="1" />
-                <input class="adv-txt" type="checkbox" name="popular" value="0">Band is popular (well known)
-
-                </div>
                           
                 <!-- Submit Button -->
                 <p>
