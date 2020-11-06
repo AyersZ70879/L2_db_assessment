@@ -51,8 +51,8 @@
     WHERE `Name` LIKE '%$band_name%'     
     AND `CountryName` LIKE '%$country%'
     AND `Formed` LIKE '%$formed%'
-    AND `Split` LIKE  '%$split%'
-    AND `Popular` LIKE  '%$popular%'
+    AND (`Split` = $split OR `Split` = 0)
+    AND (`Popular` = $popular OR `Popular` = 0)
     AND `NumFans` $fans_op $fans
     AND `Style` LIKE '%$style%'
     

@@ -42,12 +42,12 @@
             </div> <!-- / formed flexbox -->
                 
             <!-- Popular Checkbox -->
-            <input class="adv-txt" type="checkbox" name="popular" value="0">Popular - (required)
+            <input class="adv-txt" type="checkbox" name="popular" value="0">Popular (Band is well known)
                 
             <br />
             <!-- Split Checkbox -->
                 
-            <input class="adv-txt" type="checkbox" name="split" value="0">Band is still together - (required)
+            <input class="adv-txt" type="checkbox" name="split" value="0">Band is still together
                 
             <!-- Styles -->
             <div class="flex-container">

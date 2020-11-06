@@ -307,11 +307,7 @@ ORDER BY `00_L2_bands`.`ID` DESC
 
                 </div>
                 
-                
-                
-                                
-                
-                          
+                                      
                 <!-- Submit Button -->
                 <p>
                     <input class="submit advanced-button" type="submit" value="Submit" />
